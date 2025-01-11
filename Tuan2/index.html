@@ -5,7 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./scripts.js"></script>
+    <link rel="stylesheet" href="./index.css" />
   </head>
-  <body></body>
+  <body>
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>UserId</th>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Completed</th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Hàng dữ liệu sẽ được thêm vào đây -->
+      </tbody>
+    </table>
+
+    <div id="modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2 style="font-size: 20px">Chỉnh sửa thông tin dữ liệu</h2>
+        <p style="font-size: 18px">Vui lòng điền đầy đủ thông tin vào bảng</p>
+        <div style="display: flex; flex-direction: column; justify-self: start">
+          <label for="userIdInput">UserID</label>
+          <input type="text" id="userIdInput" class="modal-input" />
+          <label for="idInput">ID</label>
+          <input type="text" id="idInput" class="modal-input" />
+          <label for="titleInput">Title</label>
+          <input type="text" id="titleInput" class="modal-input" />
+          <label for="completedInput">Completed</label>
+          <input type="text" id="completedInput" class="modal-input" />
+        </div>
+        <div class="modal-actions">
+          <button class="save-modal" onclick="saveChanges()">Save</button>
+          <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //const urlBacon = "https://baconipsum.com/api/?type=all-meat";
+      const urlBacon = "https://jsonplaceholder.typicode.com/todos";
+      var nameTitle = document.getElementById("nameID");
+      (function () {
+        $.ajax({ method: "GET", url: urlBacon, dataType: "json" })
+          .done(function (data) {
+            console.log(data);
+            const tableBody = document.getElementById("tableBody");
+
+            data.map((item) => {
+              const newRow = document.createElement("tr");
+              newRow.innerHTML = `
+              <td>${item.userId}</td>
+              <td>${item.id}</td>
+              <td>${item.title}</td>
+              <td>${item.completed}</td>
+              <td><button onclick="deleteRow(this)" class="custom-button">Delete</button></td>
+              <td><button onclick="editRow(this)" class="custom-button">Edit</button></td>
+            `;
+              tableBody.appendChild(newRow);
+            });
+          })
+          .fail(function () {
+            alert("no good");
+          });
+      })();
+
+      let editingRow;
+
+      function editRow(button) {
+        const row = button.parentElement.parentElement;
+        const cells = row.querySelectorAll("td");
+        editingRow = row;
+        document.getElementById("userIdInput").value = cells[0].innerText;
+        document.getElementById("idInput").value = cells[1].innerText;
+        document.getElementById("titleInput").value = cells[2].innerText;
+        document.getElementById("completedInput").value = cells[3].innerText;
+        document.getElementById("modal").style.display = "block";
+      }
+
+      function saveChanges() {
+        const userId = document.getElementById("userIdInput").value;
+        const id = document.getElementById("idInput").value;
+        const title = document.getElementById("titleInput").value;
+        const completed = document.getElementById("completedInput").value;
+
+        if (
+          userId.trim() === "" ||
+          id.trim() === "" ||
+          title.trim() === "" ||
+          completed.trim() === ""
+        ) {
+          alert("All fields must be filled!");
+          return;
+        }
+
+        const cells = editingRow.querySelectorAll("td");
+        cells[0].innerText = userId;
+        cells[1].innerText = id;
+        cells[2].innerText = title;
+        cells[3].innerText = completed;
+
+        closeModal();
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+    </script>
+  </body>
 </html>
