@@ -1,15 +1,18 @@
 import { useState } from "react";
 import "./App.css"; // Import CSS
-
+import component_button from "./components/Buttons/component_button";
 function TodoApp() {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
+  // const [open, setOpen] = useState(false);
 
   // Thêm công việc vào danh sách
   const addTask = () => {
-    if (input.trim() !== "") {
+    if (input.trim() == "") {
+      alert("Vui lòng nhập dữ liệu!");
+    } else {
       setTasks([...tasks, input]);
-      setInput(""); // Reset input sau khi thêm
+      setInput("");
     }
   };
 
@@ -39,6 +42,7 @@ function TodoApp() {
           </li>
         ))}
       </ul>
+      <component_button>Hi</component_button>
     </div>
   );
 }
