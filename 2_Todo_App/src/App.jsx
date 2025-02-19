@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css"; // Import CSS
-import component_button from "./components/Buttons/component_button";
 function TodoApp() {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
@@ -24,7 +23,7 @@ function TodoApp() {
 
   return (
     <div className="todo-container">
-      <h2>📋 Todo List</h2>
+      <h2>📋 Todo List - Dev</h2>
       <div className="todo-input">
         <input
           type="text"
@@ -42,7 +41,6 @@ function TodoApp() {
           </li>
         ))}
       </ul>
-      <component_button>Hi</component_button>
     </div>
   );
 }

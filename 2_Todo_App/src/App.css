@@ -1,19 +1,21 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Bố cục chính */
 .todo-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
   background: #fff;
+  padding: 30px 40px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 h2 {
