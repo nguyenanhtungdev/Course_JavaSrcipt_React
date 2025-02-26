@@ -110,7 +110,7 @@ header {
 }
 .content__left {
   width: 30%;
-  height: 110vh;
+  height: 100vh;
   padding: 1.5rem 4rem;
   /* background-color: #ddd; */
 }
@@ -223,6 +223,10 @@ input[type="checkbox"] {
   accent-color: #ff4081;
 }
 
+.filter-container-1 {
+  padding: 10px;
+}
+
 .apply-btn {
   width: 100%;
   padding: 10px;
@@ -236,7 +240,7 @@ input[type="checkbox"] {
 
 .content__right {
   width: 70%;
-  height: 110vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   gap: 15px;
