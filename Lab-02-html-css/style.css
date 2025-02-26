@@ -1,0 +1,401 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nav_center ul,
+.nav_left,
+.nav_right,
+.list_button {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  align-items: center;
+}
+.nav_center a {
+  color: rgb(87, 86, 86);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.custom-button {
+  background-color: #f44b86;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.custom-button:hover {
+  background-color: #c52d62;
+  transform: scale(1.05);
+}
+
+.custom-button:active {
+  background-color: #f44b86;
+  transform: scale(0.98);
+}
+
+.button-1 {
+  background-color: #fff0f5 !important;
+  color: #f44b86 !important;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: #eee;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+  background-color: #ddd;
+}
+
+.search-container i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 16px;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #787878;
+  font-weight: 600;
+  font-size: 18px;
+}
+.content__left {
+  width: 30%;
+  height: 110vh;
+  padding: 1.5rem 4rem;
+  /* background-color: #ddd; */
+}
+.content__left__div {
+  border: 1.5px solid #efefef;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.filter-section {
+  width: 250px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-icon {
+  color: #ff4081;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.filter-container {
+  border-bottom: 1px solid #efefef;
+}
+
+.checkbox-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff4081;
+}
+
+.filter-container {
+  padding: 15px;
+}
+.checkbox-grid label {
+  color: #656565;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.filter-icon {
+  color: #ff4081;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.slider-container {
+  text-align: center;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  background: #ff80ab;
+  outline: none;
+  border-radius: 5px;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.rating-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+
+.rating-container label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff4081;
+}
+
+.apply-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff4081;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content__right {
+  width: 70%;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: #f44b86; */
+}
+
+.content__right h2 {
+  color: black;
+}
+
+.filter-container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 15px;
+  font-weight: bold;
+  color: #000;
+}
+
+.filter-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+.bar {
+  width: 18px;
+  height: 3px;
+  background-color: black;
+}
+
+.button-2 {
+  background-color: #fef0f5 !important ;
+  color: #d53e73 !important;
+}
+.button-3 {
+  background-color: #eae5f8 !important ;
+  color: #9074db !important;
+}
+.button-4 {
+  background-color: #cae4f7 !important ;
+  color: #5788f3 !important;
+}
+.button-5 {
+  background-color: #b0f1fc !important ;
+  color: #34a2b6 !important;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 40px 10%;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-section p {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ff5773;
+}
+
+.subscribe {
+  display: flex;
+  margin-top: 10px;
+}
+
+.subscribe input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.subscribe button {
+  background-color: #ff5773;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.subscribe button:hover {
+  background-color: #e0445a;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.footer-bottom a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #ff5773;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.footer-logo img {
+  height: 30px;
+  margin-right: 8px;
+}

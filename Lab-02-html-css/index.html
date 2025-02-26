@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Nhúng Font Awesome để hiển thị icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="nav_left">
+          <a href="#">
+            <img src="./image.png" alt="" />
+          </a>
+          <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="What would you like to?" />
+          </div>
+        </nav>
+        <nav class="nav_center">
+          <ul>
+            <li>
+              <a href="#">What to cook</a>
+            </li>
+            <li>
+              <a href="#">Ingredients</a>
+            </li>
+            <li>
+              <a href="#">Occasions</a>
+            </li>
+            <li>
+              <a href="#">About us</a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="nav_right">
+          <button class="custom-button button-1">Login</button>
+          <button class="custom-button">Subscribe</button>
+        </nav>
+      </header>
+      <div class="content">
+        <div class="content__left">
+          <div class="content__left__div">
+            <div class="filter-container">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <div class="filter-icon">
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                </div>
+                <span class="filter-text">FILTERS</span>
+              </div>
+              <div div class="filter-section">
+                <div class="filter-header">
+                  <span class="filter-title">Type</span>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 15L12 9L18 15"
+                      stroke="#ff4081"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div class="checkbox-grid">
+                  <label><input type="checkbox" /> Pan-fried</label>
+                  <label><input type="checkbox" /> Stir-fried</label>
+                  <label><input type="checkbox" checked /> Grilled</label>
+                  <label><input type="checkbox" checked /> Roasted</label>
+                  <label><input type="checkbox" /> Sauteed</label>
+                  <label><input type="checkbox" /> Baked</label>
+                  <label><input type="checkbox" /> Steamed</label>
+                  <label><input type="checkbox" /> Stewed</label>
+                </div>
+              </div>
+            </div>
+            <div class="filter-container">
+              <!-- Time Filter -->
+              <div class="filter-section">
+                <div class="filter-header">
+                  <span class="filter-title">Time</span>
+                  <span class="filter-icon">&#9650;</span>
+                </div>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    min="10"
+                    max="60"
+                    value="30"
+                    class="slider"
+                    id="slider1"
+                  />
+                  <input
+                    type="range"
+                    min="10"
+                    max="60"
+                    value="50"
+                    class="slider"
+                    id="slider2"
+                  />
+                  <div class="slider-labels">
+                    <span id="time1">30 minutes</span>
+                    <span id="time2">50 minutes</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-section">
+                <div class="filter-header">
+                  <span class="filter-title">Rating</span>
+                  <span class="filter-icon">&#9650;</span>
+                </div>
+                <div class="rating-container">
+                  <label
+                    ><input type="checkbox" />
+                    <span class="stars">⭐⭐⭐⭐⭐</span></label
+                  >
+                  <label
+                    ><input type="checkbox" />
+                    <span class="stars">⭐⭐⭐⭐☆</span></label
+                  >
+                  <label
+                    ><input type="checkbox" checked />
+                    <span class="stars">⭐⭐⭐☆☆</span></label
+                  >
+                  <label
+                    ><input type="checkbox" checked />
+                    <span class="stars">⭐⭐☆☆☆</span></label
+                  >
+                  <label
+                    ><input type="checkbox" checked />
+                    <span class="stars">⭐☆☆☆☆</span></label
+                  >
+                </div>
+              </div>
+
+              <button class="apply-btn">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="content__right">
+          <h2>Sorry, no results were found for "cakescascsa"</h2>
+          <img src="./image_1.png" alt="" />
+          <p>We have all your Independence Day sweets covered.</p>
+          <div class="list_button">
+            <button class="custom-button button-2">Sweet Cake</button>
+            <button class="custom-button button-3">Black Cake</button>
+            <button class="custom-button button-4">Pozole Verde</button>
+            <button class="custom-button button-5">Healthy food</button>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+              Welcome to our website, a wonderful place to explore and learn how
+              to cook like a pro.
+            </p>
+            <div class="subscribe">
+              <input type="email" placeholder="Enter your email" />
+              <button>Send</button>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Learn More</h3>
+            <ul>
+              <li><a href="#">Our Cooks</a></li>
+              <li><a href="#">See Our Features</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Shop</h3>
+            <ul>
+              <li><a href="#">Gift Subscription</a></li>
+              <li><a href="#">Send Us Feedback</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Recipes</h3>
+            <ul>
+              <li><a href="#">What to Cook This Week</a></li>
+              <li><a href="#">Pasta</a></li>
+              <li><a href="#">Dinner</a></li>
+              <li><a href="#">Healthy</a></li>
+              <li><a href="#">Vegetarian</a></li>
+              <li><a href="#">Vegan</a></li>
+              <li><a href="#">Christmas</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <img src="./image.png" alt="Chefify Logo" />
+            <span>Chefify</span>
+          </div>
+          <p>
+            © 2023 Chefify Company &nbsp; | &nbsp;
+            <a href="#">Terms of Service</a> &nbsp; | &nbsp;
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
