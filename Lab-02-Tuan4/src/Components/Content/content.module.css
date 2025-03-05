@@ -1,0 +1,149 @@
+/* Tổng thể */
+.container {
+  width: 80%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Phần hồ sơ */
+.profileBox {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.profileName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profileDescription {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.subscribers {
+  color: #ff4081;
+  font-weight: bold;
+}
+
+.shareButton {
+  background: #ff4081;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.activeTab {
+  color: #ff4081;
+  font-weight: bold;
+  border-bottom: 3px solid #ff4081;
+}
+
+.inactiveTab {
+  color: #888;
+}
+
+.inactiveTab:hover {
+  color: #000;
+}
+
+/* Lưới sản phẩm */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card sản phẩm */
+.productCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+}
+
+.productImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.productInfo {
+  padding: 15px;
+  text-align: center;
+}
+
+.productTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.productTime {
+  font-size: 14px;
+  color: #ff4081;
+}
+
+.saveButton {
+  background: none;
+  border: 1px solid #ff4081;
+  color: #ff4081;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.saveButton:hover {
+  background: #ff4081;
+  color: white;
+}
+.profileInfo h1,
+.profileInfo p {
+  text-align: start;
+}
