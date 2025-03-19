@@ -1,6 +1,9 @@
 // import { useState } from "react";
 import "./App.css";
 import { useReducer, useRef, useState, useEffect } from "react";
+import { ThemeProvider } from "./components/ThemeContext";
+import Home from "./components/Home";
+
 // useRef chỉ có thể dùng trong component function
 // const initialState = useRef({ count: 0 });
 const initialState = { count: 0 };
@@ -48,35 +51,42 @@ function App() {
   console.log("Số lần render của useReducer!");
   return (
     <>
-      <p style={{ fontWeight: 800, fontSize: "20px" }}>1. useReducer (+,-)</p>
-      <h3>Count: {state.count}</h3>
-      <button onClick={() => dispatch({ type: "increment" })}>+</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
-      <button onClick={() => dispatch({ type: "reset" })}>reset</button>
-      <br />
-      <br />
-      <p style={{ fontWeight: 800, fontSize: "20px" }}>2.useRef với useState</p>
-      <h3>Vui lòng nhập tên của bạn!</h3>
-      <input type="text" placeholder="Nhập tên của bạn" ref={inputRef} />
-      <button onClick={handleSubmit}>Hiển thị tên của bạn</button>
-      <p>Tên của bạn là: {text}</p>
-      <br />
-      <br />
-      <p style={{ fontWeight: 800, fontSize: "20px" }}>
-        3. useEffect(load get api)
-      </p>
-      <h3>Thông tin của sản phẩm</h3>
-      {loading ? <p>Đang tải...</p> : null}
-      <ul>
-        {[
-          product.map((product) => (
-            <li>
+      <div>
+        <p style={{ fontWeight: 800, fontSize: "20px" }}>1. useReducer (+,-)</p>
+        <h3>Count: {state.count}</h3>
+        <button onClick={() => dispatch({ type: "increment" })}>+</button>
+        <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+        <button onClick={() => dispatch({ type: "reset" })}>reset</button>
+      </div>
+
+      <div>
+        <p style={{ fontWeight: 800, fontSize: "20px" }}>
+          2.useRef với useState
+        </p>
+        <h3>Vui lòng nhập tên của bạn!</h3>
+        <input type="text" placeholder="Nhập tên của bạn" ref={inputRef} />
+        <button onClick={handleSubmit}>Hiển thị tên của bạn</button>
+        <p>Tên của bạn là: {text}</p>
+      </div>
+
+      <div>
+        <p style={{ fontWeight: 800, fontSize: "20px" }}>
+          3. useEffect(load get api)
+        </p>
+        <h3>Thông tin của sản phẩm</h3>
+        {loading ? <p>Đang tải...</p> : null}
+        <ul>
+          {product.map((product) => (
+            <li key={product.id}>
               <p>Ma so sp: {product.id}</p>
               <p>Ten sp: {product.title}</p>
             </li>
-          )),
-        ]}
-      </ul>
+          ))}
+        </ul>
+      </div>
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider>
     </>
   );
 }
