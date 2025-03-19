@@ -49,10 +49,27 @@ export default function Content() {
               alt={product.name}
               className={styles.productImage}
             />
+            <p style={{ height: "10vh" }}>{product.title}</p>
+            <div className={styles.productCardPrice}>
+              <div style={{ display: "flex", gap: "15px" }}>
+                <p style={{ fontWeight: "bold" }}>Giá bán</p>
+                <p style={{ color: "red" }}>{product.price} $</p>
+              </div>
+            </div>
             <div className={styles.productInfo}>
               <h3 className={styles.productTitle}>{product.name}</h3>
               <span className={styles.productTime}>{product.time}</span>
-              <button className={styles.saveButton}>♡</button>
+              <div
+                className="list_button"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "15px",
+                }}
+              >
+                <Button color="#ff9900">Xem thêm</Button>
+                <Button color="#d53e73">Mua</Button>
+              </div>
             </div>
           </div>
         ))}

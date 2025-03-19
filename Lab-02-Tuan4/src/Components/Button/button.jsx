@@ -4,6 +4,7 @@ import styles from "./button.module.css";
 export default function Button({
   children,
   variant = "default",
+  color,
   className = "",
   ...props
 }) {
@@ -12,7 +13,11 @@ export default function Button({
     .join(" ");
 
   return (
-    <button className={buttonClasses} {...props}>
+    <button
+      className={buttonClasses}
+      style={{ backgroundColor: color }}
+      {...props}
+    >
       {children}
     </button>
   );
