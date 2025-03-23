@@ -1,9 +1,26 @@
-import { useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 function Home() {
   const { theme, toggleTheme } = useContext(ThemeContext); // sử dụng useContext(Context)
+  const [number, setNumber] = useState(1);
+  const expensiveCalculation = (num) => {
+    console.log("Calculating...");
+    let result = 0;
+    for (let i = 0; i < 10000; i++) {
+      result += num * 2;
+    }
+    return result;
+  };
 
+  const calculatedValue = useMemo(() => expensiveCalculation(number), [number]);
+  // Cú pháp
+  // const memoizedValue = useMemo(() => {
+  //   // logic tính toán
+  //   return giá_trị;
+  // }, [deps]);
+  //   () => {}: Hàm callback để tính toán giá trị.
+  // [deps]: Mảng phụ thuộc. useMemo chỉ tính lại giá trị nếu một trong các dependency thay đổi.
   return (
     <div
       style={{
@@ -43,6 +60,13 @@ function Home() {
         4. Context.displayName: đặt tên cho context, để sử dụng trong devtools
       </p>
       <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Sử dụng useMemo để ghi nhớ giá trị đã tính toán</p>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(Number(e.target.value))}
+      />
+      <p>Kết quả: {calculatedValue}</p>
     </div>
     //Hoặc dùng, khi sử dụng consumer thì ko cần khai báo useContext, ít sử dụng phổ biến
     // <ThemeContext.Consumer>
