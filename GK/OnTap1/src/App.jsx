@@ -36,9 +36,11 @@ function App() {
   useEffect(() => {
     const getDataProduct = async () => {
       try {
-        const respone = await fetch("https://fakestoreapi.com/products");
+        const respone = await fetch(
+          "https://67e369672ae442db76d00431.mockapi.io/product"
+        );
         const data = await respone.json();
-        setProduct(data.slice(0, 2));
+        setProduct(data.slice(0, 5));
       } catch (error) {
         console.error("Lỗi khi gọi API:", error);
       } finally {
@@ -79,7 +81,7 @@ function App() {
           {product.map((product) => (
             <li key={product.id}>
               <p>Ma so sp: {product.id}</p>
-              <p>Ten sp: {product.title}</p>
+              <p>Ten sp: {product.name}</p>
             </li>
           ))}
         </ul>
