@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
+import OrderTable from "./components/OrderTable";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import APIOverview from "./pages/APIOverview";
@@ -17,7 +18,7 @@ function App() {
           <Header />
           <main className="flex-1 p-4">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<OrderTable />} />
               <Route path="/api" element={<APIOverview />} />
               <Route path="/datatable" element={<DataTableAPI />} />
             </Routes>

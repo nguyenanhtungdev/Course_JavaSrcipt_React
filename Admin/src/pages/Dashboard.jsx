@@ -1,10 +1,12 @@
-import React from "react";
+// src/pages/Dashboard.jsx
+import React, { useState } from "react";
 import Pagination from "../components/Pagination";
-import { useState } from "react";
+import EditModal from "../components/EditModal";
 
 export default function Dashboard() {
-  const users = [
+  const initialUsers = [
     {
+      id: 1,
       name: "Elizabeth Lee",
       company: "AvatarSystems",
       value: "$359",
@@ -13,6 +15,7 @@ export default function Dashboard() {
       img: 1,
     },
     {
+      id: 2,
       name: "Carlos Garcia",
       company: "SmoozeShift",
       value: "$747",
@@ -21,30 +24,7 @@ export default function Dashboard() {
       img: 2,
     },
     {
-      name: "Elizabeth Bailey",
-      company: "Prime Time Telecom",
-      value: "$564",
-      date: "08/08/2023",
-      status: "In-progress",
-      img: 3,
-    },
-    {
-      name: "Ryan Brown",
-      company: "OmniTech Corporation",
-      value: "$541",
-      date: "31/08/2023",
-      status: "In-progress",
-      img: 4,
-    },
-    {
-      name: "Ryan Young",
-      company: "DataStream Inc.",
-      value: "$769",
-      date: "01/05/2023",
-      status: "Completed",
-      img: 5,
-    },
-    {
+      id: 6,
       name: "Hailey Adams",
       company: "FlowRush Inc.",
       value: "$922",
@@ -60,8 +40,19 @@ export default function Dashboard() {
     Completed: "bg-green-100 text-green-600",
   };
 
+  const [users, setUsers] = useState(initialUsers);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 11;
+
+  // State để lưu user đang được chỉnh sửa
+  const [editing, setEditing] = useState(null);
+
+  // Hàm cập nhật thông tin user sau khi lưu từ modal
+  const handleSave = (updatedUser) => {
+    setUsers((prev) =>
+      prev.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+    );
+  };
 
   return (
     <div className="p-6 space-y-8">
@@ -116,6 +107,7 @@ export default function Dashboard() {
                 <th>Order Value</th>
                 <th>Order Date</th>
                 <th>Status</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -131,6 +123,7 @@ export default function Dashboard() {
                     <img
                       src={`https://i.pravatar.cc/32?img=${user.img}`}
                       className="rounded-full"
+                      alt={user.name}
                     />
                     {user.name}
                   </td>
@@ -146,6 +139,14 @@ export default function Dashboard() {
                       {user.status}
                     </span>
                   </td>
+                  <td>
+                    <button
+                      onClick={() => setEditing(user)}
+                      className="text-pink-500 hover:underline"
+                    >
+                      Edit
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -157,6 +158,14 @@ export default function Dashboard() {
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
+
+      {editing && (
+        <EditModal
+          data={editing}
+          onClose={() => setEditing(null)}
+          onSave={handleSave}
+        />
+      )}
     </div>
   );
 }
