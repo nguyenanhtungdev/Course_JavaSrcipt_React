@@ -1,13 +1,18 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import OrderTable from "./components/OrderTable";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import APIOverview from "./pages/APIOverview";
 import DataTableAPI from "./pages/DataTableAPI";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import MessagesPage from "./pages/MessagesPage";
+import ProfilePage from "./pages/ProfilePage";
+import Notification from "./pages/Notifications";
+import Connect from "./pages/Connect";
+import Group from "./pages/Group";
 
 function App() {
   return (
@@ -21,9 +26,14 @@ function App() {
               <Route path="/" element={<OrderTable />} />
               <Route path="/api" element={<APIOverview />} />
               <Route path="/datatable" element={<DataTableAPI />} />
+              <Route path="/analytics" element={<AnalyticsPage />} />
+              <Route path="/messages" element={<MessagesPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/notification" element={<Notification />} />
+              <Route path="/connect" element={<Connect />} />
+              <Route path="/group" element={<Group />} />
             </Routes>
           </main>
-          <Footer />
         </div>
       </div>
     </Router>

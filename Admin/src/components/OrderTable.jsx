@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import EditModal from "./EditModal";
 import AddModal from "./AddModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function OrderTable() {
   const [orders, setOrders] = useState([]);
   const [editing, setEditing] = useState(null);
   const [addModal, setAddModal] = useState(false);
+  const [exporting, setExporting] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -14,6 +17,36 @@ export default function OrderTable() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const handleExport = () => {
+    setExporting(true);
+
+    setTimeout(() => {
+      const headers = ["Name", "Company", "Value", "Date", "Status"];
+      const rows = orders.map((u) => [
+        `"${u.name}"`,
+        `"${u.company}"`,
+        `"${u.value}"`,
+        `"${u.date}"`,
+        `"${u.status}"`,
+      ]);
+
+      const csvContent =
+        "data:text/csv;charset=utf-8," +
+        [headers, ...rows].map((e) => e.join(",")).join("\n");
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `users_export_${Date.now()}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      toast.success("Export thành công!");
+      setExporting(false);
+    }, 1200);
+  };
 
   useEffect(() => {
     fetch("https://dummyjson.com/users?limit=100")
@@ -70,11 +103,19 @@ export default function OrderTable() {
           >
             + Add User
           </button>
-          <button className="border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-500 hover:text-white">
+          <button className="border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-50">
             Import
           </button>
-          <button className="border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-500 hover:text-white">
-            Export
+          <button
+            onClick={handleExport}
+            disabled={exporting}
+            className={`border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-50 ${
+              exporting
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                : "border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white"
+            }`}
+          >
+            {exporting ? "Exporting..." : "Export"}
           </button>
         </div>
       </div>
@@ -190,6 +231,7 @@ export default function OrderTable() {
           Next &gt;
         </button>
       </div>
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 }
