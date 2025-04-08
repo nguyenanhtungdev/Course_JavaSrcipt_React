@@ -6,7 +6,10 @@ export default function Header() {
   const navigate = useNavigate();
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-      <h1 className="text-xl font-bold text-pink-500">Dashboard</h1>
+      <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        Dashboard
+      </h1>
+
       <div className="flex items-center gap-4">
         <input
           type="text"
