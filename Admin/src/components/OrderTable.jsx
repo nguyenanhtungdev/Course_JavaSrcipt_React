@@ -4,6 +4,11 @@ import EditModal from "./EditModal";
 export default function OrderTable() {
   const [orders, setOrders] = useState([]);
   const [editing, setEditing] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedOrders = orders.slice(startIndex, endIndex);
 
   useEffect(() => {
     fetch("https://dummyjson.com/users?limit=100")
@@ -23,12 +28,6 @@ export default function OrderTable() {
         setOrders(transformed);
       });
   }, []);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedOrders = orders.slice(startIndex, endIndex);
 
   const handleSave = (updated) => {
     setOrders((prev) =>
