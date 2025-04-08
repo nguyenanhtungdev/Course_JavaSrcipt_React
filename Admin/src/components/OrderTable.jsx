@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import EditModal from "./EditModal";
+import AddModal from "./AddModal";
 
 export default function OrderTable() {
   const [orders, setOrders] = useState([]);
   const [editing, setEditing] = useState(null);
+  const [addModal, setAddModal] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedOrders = orders.slice(startIndex, endIndex);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
+  const paginatedOrders = orders.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   useEffect(() => {
     fetch("https://dummyjson.com/users?limit=100")
@@ -35,11 +40,36 @@ export default function OrderTable() {
     );
   };
 
+  const renderPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push("...");
+
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+
+      if (currentPage < totalPages - 2) pages.push("...");
+      pages.push(totalPages);
+    }
+    return pages;
+  };
+
   return (
     <div className="p-6 bg-white shadow rounded-lg">
+      {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Detailed Report</h2>
         <div className="space-x-2">
+          <button
+            className="border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-500 hover:text-white"
+            onClick={() => setAddModal(true)}
+          >
+            + Add User
+          </button>
           <button className="border border-pink-500 text-pink-500 px-4 py-1 rounded hover:bg-pink-500 hover:text-white">
             Import
           </button>
@@ -49,6 +79,7 @@ export default function OrderTable() {
         </div>
       </div>
 
+      {/* Table */}
       <table className="w-full text-left border-separate border-spacing-y-2">
         <thead className="text-sm text-gray-500">
           <tr>
@@ -63,7 +94,7 @@ export default function OrderTable() {
         </thead>
         <tbody>
           {paginatedOrders.map((row) => (
-            <tr key={row.id} className="bg-gray-50 x`">
+            <tr key={row.id} className="bg-gray-50">
               <td className="py-2 pl-4">
                 <input type="checkbox" />
               </td>
@@ -104,6 +135,7 @@ export default function OrderTable() {
         </tbody>
       </table>
 
+      {/* Modals */}
       {editing && (
         <EditModal
           data={editing}
@@ -111,7 +143,14 @@ export default function OrderTable() {
           onSave={handleSave}
         />
       )}
+      {addModal && (
+        <AddModal
+          onClose={() => setAddModal(false)}
+          onAdd={(newUser) => setOrders((prev) => [newUser, ...prev])}
+        />
+      )}
 
+      {/* Pagination */}
       <div className="flex justify-center items-center gap-2 mt-6">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -121,27 +160,31 @@ export default function OrderTable() {
           &lt; Prev
         </button>
 
-        {[...Array(Math.ceil(orders.length / itemsPerPage)).keys()].map((i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 rounded text-sm ${
-              currentPage === i + 1
-                ? "bg-pink-500 text-white"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
+        {renderPageNumbers().map((page, index) =>
+          page === "..." ? (
+            <span key={index} className="px-2 text-gray-500">
+              ...
+            </span>
+          ) : (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-3 py-1 rounded text-sm ${
+                currentPage === page
+                  ? "bg-pink-500 text-white"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              {page}
+            </button>
+          )
+        )}
 
         <button
           onClick={() =>
-            setCurrentPage((prev) =>
-              Math.min(prev + 1, Math.ceil(orders.length / itemsPerPage))
-            )
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
           }
-          disabled={currentPage === Math.ceil(orders.length / itemsPerPage)}
+          disabled={currentPage === totalPages}
           className="px-3 py-1 rounded border text-sm hover:bg-gray-100 disabled:text-gray-400"
         >
           Next &gt;
