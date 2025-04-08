@@ -134,7 +134,6 @@ export default function Sidebar() {
           </NavLink>
         </nav>
       </div>
-
       <div className="bg-blue-100 rounded-lg p-4 text-center mt-10 w-full flex flex-col items-center">
         <img src="/public/images/anh1.png" alt="Banner" />
         <p className="font-medium text-lg text-gray-600">V2.0 is available</p>
