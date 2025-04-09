@@ -162,6 +162,7 @@ export default function APIPlayground() {
   const tryParseJSON = (jsonString) => {
     try {
       return JSON.parse(jsonString);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return {};
     }
@@ -170,6 +171,7 @@ export default function APIPlayground() {
   const formatJSON = (json) => {
     try {
       return JSON.stringify(json, null, 2);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return String(json);
     }
