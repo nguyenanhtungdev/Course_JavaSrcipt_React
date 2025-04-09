@@ -13,6 +13,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Notification from "./pages/Notifications";
 import Connect from "./pages/Connect";
 import Group from "./pages/Group";
+import APIPage from "./pages/APIPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path="/notification" element={<Notification />} />
               <Route path="/connect" element={<Connect />} />
               <Route path="/group" element={<Group />} />
+              <Route path="/apipage" element={<APIPage />} />
             </Routes>
           </main>
         </div>

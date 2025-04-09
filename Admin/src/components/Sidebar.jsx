@@ -56,6 +56,26 @@ export default function Sidebar() {
       badge: "3",
     },
     {
+      path: "/apipage",
+      name: "Test API",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-5 h-5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 12h18M12 3v18"
+          />
+        </svg>
+      ),
+    },
+    {
       path: "/group",
       name: "Đội nhóm",
       icon: (
@@ -118,6 +138,7 @@ export default function Sidebar() {
       badge: "5",
       badgeColor: "bg-red-500",
     },
+
     {
       path: "/connect",
       name: "Kết nối",
